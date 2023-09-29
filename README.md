@@ -72,6 +72,7 @@ This is the recomended version for bash: `#!/usr/bin/env bash`
 [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))
 
 
+
 #### Execution Consideration
 
 When executing the bash script we can use the `./` shrthand notation to execute the bash script.
