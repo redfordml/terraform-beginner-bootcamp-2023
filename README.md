@@ -47,7 +47,7 @@ PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-poli
 UBUNTU_CODENAME=jammy
 ```
 
-## Refractoring into bash script
+#### Refractoring into bash script
 
 While fixing the terraform cli gpg depreciation issue, I notice thta bash steps were a considrable ammount more code. so we decided to create a bash script to install the Terrafrom CLI.
 
@@ -59,7 +59,7 @@ This bash script is located here: [./bin/install_terraform__cli](./bin/install_t
 - this wil allow better portability for each projects that need to install Terraform CLI.
 
 
-### Shebang considerations
+#### Shebang considerations
 
 A shebang tells the bash script what program that will interpet the script. eg `#!/bin/bash`
 
@@ -72,9 +72,7 @@ This is the recomended version for bash: `#!/usr/bin/env bash`
 [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))
 
 
-
 #### Execution Consideration
-
 
 When executing the bash script we can use the `./` shrthand notation to execute the bash script.
 
