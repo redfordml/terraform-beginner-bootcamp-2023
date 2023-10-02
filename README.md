@@ -194,6 +194,16 @@ aws sts get-caller-identity
 
 ```
 
+if it's successful, you should see a Json payload return like this:
 
+
+```json
+{
+     "UserId": "AAKJDKJSDHCWVJ4LY4",
+     "Account": "8356465776845",
+     "Arn": "arn:aws:iam::8356465776845:user/EXAMPLEUSER  "
+
+}
+```
 
 
