@@ -288,7 +288,10 @@ If you lose this file, you lose knowing state of your infrastructure.
 
 `.terraform` Contains binaries of terraform providers.
 
+### Issues with Terraform Cloud Login and Gitpod Workspac
 
+When attempting to run `terraform login` It will launch in bash asking a vew to generate a token. You should select 
+**Print** option and copy token generated in terraform clud.
 
 
 
