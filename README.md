@@ -294,6 +294,6 @@ When attempting to run `terraform login` It will launch in bash asking a vew to 
 **Print** option and copy token generated in terraform clud.
 
 
+###
 
-
-
+We have automated this workaround with the following bash script [./bin/generate_tfrc_credentials](./bin/generate_tfrc_credentials)
