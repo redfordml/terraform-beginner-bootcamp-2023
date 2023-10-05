@@ -294,6 +294,45 @@ When attempting to run `terraform login` It will launch in bash asking a vew to 
 **Print** option and copy token generated in terraform clud.
 
 
-###
+
 
 We have automated this workaround with the following bash script [./bin/generate_tfrc_credentials](./bin/generate_tfrc_credentials)
+
+
+#### Troubleshooting error trying to run `terraform apply` with CLI Driven Workflow
+
+
+When I configure Terraform Cloud token in my Gitpod Global Env Vars, I tried to run a `tf apply` but throw me this error:
+
+
+```terraform
+error: No valid credential sources found
+│ 
+│   with provider["registry.terraform.io/hashicorp/aws"],
+│   on <empty> line 0:
+│   (source code not available)
+│ 
+│ Please see https://registry.terraform.io/providers/hashicorp/aws
+│ for more information about providing credentials.
+│ 
+│ Error: failed to refresh cached credentials, no EC2 IMDS role found,
+│ operation error ec2imds: GetMetadata, request canceled, context deadline
+│ exceeded
+│ 
+╵
+╷
+│ Error: Invalid provider configuration
+│ 
+│ Provider "registry.terraform.io/hashicorp/aws" requires explicit
+│ configuration. Add a provider block to the root module and configure the
+│ provider's required arguments as described in the provider documentation.
+
+```
+
+***Solution***
+
+Whe you configure `Terraform CLI Driven Workflow` access key that execute API calls to AWS are located in Teraform Cloud.
+
+You have the Terraform token to comunicate with therraform cloud, the it execute the plan. configure those AWS Env Vars in terraform cloud now!!
+
+
