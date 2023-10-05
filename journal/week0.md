@@ -2,40 +2,42 @@
 
 ## Table of Content
 
-- [Terraform Beginner Bootcamp 2023](#terraform-beginner-bootcamp-2023)
-  * [Table of Content](#table-of-content)
-    + [Semantic Versioning :mage:](#semantic-versioning--mage-)
-    + [Considerations for Linux Distribution](#considerations-for-linux-distribution)
-      - [Refractoring into bash script](#refractoring-into-bash-script)
-      - [Shebang considerations](#shebang-considerations)
-      - [Execution Consideration](#execution-consideration)
-      - [Linux Permission Considerations](#linux-permission-considerations)
-    + [Github Lifecycle (Before, Initm, Command)](#github-lifecycle--before--initm--command-)
-    + [Working with Env Vars](#working-with-env-vars)
-      - [env command](#env-command)
-      - [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
-      - [Printing Env Var](#printing-env-var)
-      - [Scoping of Env Vars](#scoping-of-env-vars)
-      - [Persisting Env Vars in Gitpod](#persisting-env-vars-in-gitpod)
-    + [AWS CLI installation](#aws-cli-installation)
-    + [Terrafom Basics](#terrafom-basics)
-      - [Install Terrafom CLI](#install-terrafom-cli)
-      - [Terraform Registry](#terraform-registry)
-      - [Terraform Consle](#terraform-consle)
-      - [Terraform Init](#terraform-init)
-      - [Terrafom Plan](#terrafom-plan)
-      - [Terraform Apply](#terraform-apply)
-      - [Terraform Destroy](#terraform-destroy)
-      - [Terrafom Lock File](#terrafom-lock-file)
-      - [Terraform State File](#terraform-state-file)
-      - [Terraform Directory](#terraform-directory)
-    + [Terrraform Troubleshooting](#terrraform-troubleshooting)
-      - [Issues with Terraform Cloud Login and Gitpod Workspac](#issues-with-terraform-cloud-login-and-gitpod-workspac)
-      - [Troubleshooting error trying to run `terraform apply` with CLI Driven Workflow](#troubleshooting-error-trying-to-run--terraform-apply--with-cli-driven-workflow)
+  * [Semantic Versioning](#semantic-versioning)
+  * [Considerations for Linux Distribution](#considerations-for-linux-distribution)
+    + [Refractoring into bash script](#refractoring-into-bash-script)
+    + [Shebang considerations](#shebang-considerations)
+    + [Execution Consideration](#execution-consideration)
+    + [Linux Permission Considerations](#linux-permission-considerations)
+  * [Gitpod Lifecycle](#gitpod-lifecycle)
+- [Working with Env Vars](#working-with-env-vars)
+  * [env command](#env-command)
+  * [Setting and Unsetting Env Vars](#setting-and-unsetting-env-vars)
+  * [Printing Env Var](#printing-env-var)
+  * [Scoping of Env Vars](#scoping-of-env-vars)
+  * [Persisting Env Vars in Gitpod](#persisting-env-vars-in-gitpod)
+- [AWS CLI installation](#aws-cli-installation)
+  * [Terrafom Basics](#terrafom-basics)
+  * [Install Terrafom CLI](#install-terrafom-cli)
+  * [Terraform Registry](#terraform-registry)
+  * [Terraform Consle](#terraform-consle)
+  * [Terraform Init](#terraform-init)
+  * [Terrafom Plan](#terrafom-plan)
+  * [Terraform Apply](#terraform-apply)
+  * [Terraform Destroy](#terraform-destroy)
+  * [Terrafom Lock File](#terrafom-lock-file)
+  * [Terraform State File](#terraform-state-file)
+  * [Terraform Directory](#terraform-directory)
+- [Terrraform Troubleshooting](#terrraform-troubleshooting)
+  * [Issues with Terraform Cloud Login and Gitpod Workspac](#issues-with-terraform-cloud-login-and-gitpod-workspac)
+  * [Troubleshooting error trying to run terraform apply with CLI Driven Workflow](#troubleshooting-error-trying-to-run-terraform-apply-with-cli-driven-workflow)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
-### Semantic Versioning :mage:
+
+
+
+
+### Semantic Versioning
 
 This project is going to utilize semantic versioning for its taggin.
 [semver.org](https://www.semver.org/)
@@ -130,15 +132,15 @@ chmod 744 ./bin/install-terraform_cli
 
 
 
-### Github Lifecycle (Before, Initm, Command)
+### Gitpod Lifecycle
 
 We need to be careful when using the Init because will not rerun if we restart an existing workspace.
 
 [Gitpod Tasks Documentation](https://www.gitpod.io/docs/configure/workspaces/tasks)
 
-### Working with Env Vars
+## Working with Env Vars
 
-#### env command
+### env command
 
 We can list all environment variables (Env Vars) using `env` command.
 
@@ -146,7 +148,7 @@ We can list all environment variables (Env Vars) using `env` command.
 We can filter specific env vars using grep. eg. `env | grep AWS_`
 
 
-#### Setting and Unsetting Env Vars
+### Setting and Unsetting Env Vars
 
 
 In the terminal we can set using `export DATAPREP='/home/user1/data.csv'`
@@ -173,12 +175,12 @@ echo $HELLO
 
 ```
 
-#### Printing Env Var
+### Printing Env Var
 
 We can print an Env Var using echo eg. `echo $HELLO`
 
 
-#### Scoping of Env Vars
+### Scoping of Env Vars
 
 When you open a new bash terminal it will not be aware of Env Vars that you have set in another terminal.
 
@@ -186,7 +188,7 @@ If you want to Env Var to persist across all future bash terminals that are open
 
 
 
-#### Persisting Env Vars in Gitpod
+### Persisting Env Vars in Gitpod
 
 We can persist Env Vars into Gitpod by storing them in Gitpod Secret Storage.
 
@@ -203,7 +205,7 @@ All future Workspaces launched will set the env vars for all bsh terminals opene
 You can also set env vars in the  `.gitpod.yml` but this can only non-sensitive env vars.
 
 
-### AWS CLI installation
+## AWS CLI installation
 
 AWS CLI is installed for the project via the bash script [`./bin/install_aws_cli`](./bin/install_aws_cli)
 
@@ -237,7 +239,7 @@ We'll need to generate AWS credentials  from IAM user in order to use AWS CLI.
 
 ### Terrafom Basics
 
-#### Install Terrafom CLI
+### Install Terrafom CLI
 
 The Terraform CLI installation instruction have chaged due to gpg keyring changes.
 So we needed to refer to the lastest install cli documentation via Terraform website and change the scripting for installation.
@@ -246,7 +248,7 @@ So we needed to refer to the lastest install cli documentation via Terraform web
 
 
 
-#### Terraform Registry 
+### Terraform Registry 
 
 Terraform sources their providers and modules from terraform registry which are located at [Registry.terraform.io](https://registry.terraform.io/)
 
@@ -257,18 +259,18 @@ Terraform sources their providers and modules from terraform registry which are 
 
 [Random Terraform provider](https://registry.terraform.io/providers/hashicorp/random/latest)
 
-#### Terraform Consle
+### Terraform Consle
 
 We can see a list of all Terraform Commands by typing `terraform`
 
-#### Terraform Init
+### Terraform Init
 
 `terraform init`
 
 As the start of a new terraform project, we will run ` terraform init` to download the binaries for the terraform providers that w'll use in this project.
 
 
-#### Terrafom Plan
+### Terrafom Plan
 
 `terraform apply`
 
@@ -276,7 +278,7 @@ This will generate out a changeset, about the state of our infrastructure and wi
 We can output this changesset ie. "plan" to be passed to an apply, but ofte you can just ingnore.
 
 
-#### Terraform Apply
+### Terraform Apply
 
 `terraform apply`
 
@@ -286,7 +288,7 @@ This will run a plan and pass the changeset to be executed by terraform. apply s
 
 If we want to automatically approve an "apply", we can provide the auto approve flag eg. `terraform apply --auto-approve`
 
-#### Terraform Destroy
+### Terraform Destroy
 
 `terraform destroy`
 
@@ -297,7 +299,7 @@ you can also use the auto approve flag, to skip the approve prompt eg.
 `--auto-approve`
 
 
-#### Terrafom Lock File
+### Terrafom Lock File
 
 
 `.terraform.lock.hcl` Contains the loked versioning the providers or modules that should be used with this project.
@@ -305,7 +307,7 @@ you can also use the auto approve flag, to skip the approve prompt eg.
 the terraform lock file should be commited to you version control system eg. Github.
 
 
-#### Terraform State File
+### Terraform State File
 
 `.terraform.tfstate` Contains information about your current state of your infrastructure.
 
@@ -318,25 +320,23 @@ If you lose this file, you lose knowing state of your infrastructure.
 `.terraform.tfstate.backup` Is the previous state file state.
 
 
-#### Terraform Directory
+### Terraform Directory
 
 `.terraform` Contains binaries of terraform providers.
 
 
-### Terrraform Troubleshooting
+## Terrraform Troubleshooting
 
 
-#### Issues with Terraform Cloud Login and Gitpod Workspac
+### Issues with Terraform Cloud Login and Gitpod Workspac
 
 When attempting to run `terraform login` It will launch in bash asking a vew to generate a token. You should select 
 **Print** option and copy token generated in terraform clud.
 
-
 We have automated this workaround with the following bash script [./bin/generate_tfrc_credentials](./bin/generate_tfrc_credentials)
 
 
-#### Troubleshooting error trying to run `terraform apply` with CLI Driven Workflow
-
+### Troubleshooting error trying to run terraform apply with CLI Driven Workflow
 
 When I configure Terraform Cloud token in my Gitpod Global Env Vars, I tried to run a `tf apply` but throw me this error:
 
