@@ -56,3 +56,31 @@ This is the default dile to load in teraform variable in blank
 
 
 TODO: documetn whic terraform variables took presence
+
+## Dealing With Configuration Drift
+
+## What happens if we lose our state file
+
+If you lose your state file, you must likely have to tear down all your cloud infrastructure manually.
+
+You can use terraform import, but it won't work for all cloud resources. You need to check the TF providers documentation for wich resources support import.
+
+
+### Fix Missing Resources With Terraform Import
+
+`terraform import aws_s3_bucket.bucket bucket-name`
+
+[Terraform Import](https://developer.hashicorp.com/terraform/cli/import)
+[AWS S3 Bucket Import](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)
+
+### Fix Manual Configurations
+
+If someone goes and delete or modifies cloud resources manually trough clickOps.
+
+If we run Terraform Plan, TF will atempt to put our infrastructure back into the expected state fixing Configuration Drift.
+
+
+
+
+
+##

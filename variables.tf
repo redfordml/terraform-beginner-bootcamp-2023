@@ -10,3 +10,13 @@ variable "user_uuid" {
     error_message = "User UUID must be in the UUID format (e.g., 123e4567-e89b-12d3-a456-426655440000)"
   }
 }
+variable "bucket_name" {
+  type        = string
+  description = "Name of the AWS S3 bucket"
+  
+  validation {
+    condition     = can(regex("^[a-zA-Z0-9.-]{3,63}$", var.bucket_name))
+    error_message = "Invalid bucket name. Bucket names must be between 3 and 63 characters long and can only contain alphanumeric characters, hyphens, and periods."
+  }
+}
+
