@@ -80,7 +80,60 @@ If someone goes and delete or modifies cloud resources manually trough clickOps.
 If we run Terraform Plan, TF will atempt to put our infrastructure back into the expected state fixing Configuration Drift.
 
 
+## Fix Using Terraform Refresh
+
+
+## Terraform Modules
+
+[Refresh commnad](https://developer.hashicorp.com/terraform/cli/commands/refresh)
+
+```sh
+terraform apply -refresh-only -auto-approve
 
 
 
-##
+```
+
+### Terraform Modules Structure
+
+It is recomended to place modules in  `modules` directory when locally
+developing modules, but you can name it whatever you like.
+
+### Passing TF Variables
+
+We can pass input variables to our module.
+The module has to declare te tf variables in its own variable.tf
+
+
+```tf
+
+module "terrahouse_aws" {
+
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+  
+}
+
+```
+
+
+### Terraform Sources
+
+Using the source we can import the modules from various places eg:
+
+- Locally
+- Github
+- Terraform Registry
+
+[Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+```tf
+
+module "terrahouse_aws" {
+
+  source = "./modules/terrahouse_aws"
+ 
+}
+
+```
